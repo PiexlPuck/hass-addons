@@ -1,0 +1,31 @@
+configuration:
+  gateway:
+    name: "Bluetooth Gateway"
+    description: "The Bluetooth gateway mode to use. Select 'none' to use the local Bluetooth adapter."
+  gateway_host:
+    name: "Remote Gateway Host"
+    description: "IP Address or Hostname of the remote Noble gateway (if using Noble)."
+  gateway_port:
+    name: "Remote Gateway Port"
+    description: "Port of the remote Noble gateway."
+  gateway_key:
+    name: "Remote Gateway Key"
+    description: "API Key for the remote Noble gateway."
+  gateway_user:
+    name: "Remote Gateway Username"
+    description: "Username for the remote Noble gateway."
+  gateway_pass:
+    name: "Remote Gateway Password"
+    description: "Password for the remote Noble gateway."
+  ignore_crc:
+    name: "Ignore CRC Errors"
+    description: "Ignore bad CRC in responses from the lock."
+  debug_communication:
+    name: "Debug Communication"
+    description: "Log BLE communication messages to and from the lock."
+  debug_mqtt:
+    name: "Debug MQTT"
+    description: "Log MQTT messages sent and received."
+  gateway_debug:
+    name: "Debug Gateway"
+    description: "Log websocket messages to and from the remote gateway."
