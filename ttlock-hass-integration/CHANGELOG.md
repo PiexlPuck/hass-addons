@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.4.11] - 2021-05-06
+## [0.5.1] - 2026-05-28
+- Configure local Bluetooth adapter (`bluetooth_adapter` option in config)
+- Extract Bluetooth device ID and export `NOBLE_HCI_DEVICE_ID`
+- Suppress scary ENOENT file errors quietly on first-run boot
+- Remove the outdated external noble websocket gateway option
+- Add a premium Home screen empty state setup assistant with micro-animations
+- Bump core dependencies (Express, WS, Async-MQTT, Noble) for maximum stability
 - Bump SDK in attempt at fixing connect limbo
 
 ## [0.4.0] - 2021-03-27

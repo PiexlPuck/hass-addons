@@ -1,44 +1,29 @@
-## How to use
-- Install addon (it will take a while to build the docker image, be patient)
-- (optional) Install an MQTT broker addon (such as Mosquitto)
-- (optional) Configure gateway options (see below)
-- Open Web UI (from Supervisor -> TTLock or from the sidebar)
-- Pair a lock (lock needs to be awake when starting the addon or running a BLE scan manually and during pairing, to keep the lock awake just touch the keyboard)
-- If you installed the MQTT broker the device should now be visibile as a `lock`
+## How to Use
 
-## Known issues
-- Low BLE signal (which seems to be the case in general) can lead to
-  - sometimes failing to pair the lock (make sure you can reset it to factory defaults)
-  - failure to read all credentials
-  - failure to discover paired locks at startup
-- Unable to edit fingerprint validity inteval
+1. **Install Add-on**: Install the add-on from your supervisor panel (building the Docker image might take a few minutes on slower hardware).
+2. **Set up Bluetooth**: 
+   - Connect a compatible Bluetooth USB dongle to your Home Assistant device (recommended for the best range and stability).
+   - In the **Configuration** tab, set the `bluetooth_adapter` option to match your adapter (usually `hci0` or `hci1`).
+3. **Configure MQTT**: Make sure you have an MQTT broker installed and configured in Home Assistant (such as Mosquitto broker).
+4. **Wake up the lock**: Press any key on your lock's keypad so it lights up and starts broadcasting BLE signals.
+5. **Open Web UI & Pair**: Open the Ingress Web UI from the sidebar or the add-on page, and click the bold **Scan for Locks** button in the setup assistant to find and pair your lock.
 
-## Gateway options
+---
 
-If your HA host does not have a Bluetooth adapter, you can use another computer/PI/ESP32 (in the near future) as a gateway. This is not related to the TTLock G2 gateway.  
+## Configuration Settings
 
-Use the Configure tab to specify gateway options:
-```yaml
-gateway: "noble"
-gateway_host: "192.168.1.10"
-gateway_port: 80
-gateway_key: "00112233445566778899aabbccddeeff"
-gateway_user: "admin"
-gateway_pass: "admin"
-```
-
-Please see [ttlock-sdk-js Gateway option](https://github.com/kind3r/ttlock-sdk-js#gateway-option) for running an example gateway server. I am currently working on porting this server to run on ESP32 devices.  
-
-## Other options
-
-Sometimes the lock just does not want to send the right CRC even tho the packet contains the proper data. In such cases enabling `ignore_crc` will tell the addon not to fail when bad CRC messages are received.  
+You can customize the add-on behavior under the **Configuration** tab in the Home Assistant UI:
 
 ```yaml
-ignore_crc: true // ignore bad CRC in responses from lock
-debug_communication: true // log BLE communication messages to and from the lock
-debug_mqtt: true // log MQTT messages sent and received
-gateway_debug: true // log websocket messages to and from the gateway
+bluetooth_adapter: "hci0" # The Bluetooth device ID to use (e.g. hci0, hci1, 0, or 1)
+ignore_crc: false # Set to true to ignore bad CRC checksums from older TTLock models
+debug_communication: false # Set to true to log detailed raw BLE traffic for debugging
+debug_mqtt: false # Set to true to log MQTT discovery and state messages
 ```
 
+---
 
+## Known Issues
 
+- **Low BLE Signal**: Low BLE signals can lead to failed pairing attempts or missing/corrupted log syncs. Keep your Home Assistant Bluetooth dongle as close to the lock as possible.
+- **Keypad Awake requirement**: The lock is offline and enters deep sleep when idle. It *must* be awake (keypad lit up) when attempting pairing, scans, or initial settings updates.
