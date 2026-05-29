@@ -9,14 +9,14 @@
               <v-icon size="90" color="blue lighten-1" class="pulse-icon">mdi-bluetooth-connect</v-icon>
             </div>
             
-            <h2 class="display-1 font-weight-bold mb-4 grey--text text--darken-3">Add Your TTLock</h2>
+            <h2 class="display-1 font-weight-bold mb-4 white--text">Add Your TTLock</h2>
             <p class="body-1 text--secondary mb-6 leading-relaxed">
               Pair and operate your smart locks locally. To get started, make sure your Bluetooth adapter is configured and wake up your lock's keypad so it starts broadcasting.
             </p>
 
             <v-divider class="my-6"></v-divider>
 
-            <h3 class="subtitle-1 font-weight-bold mb-3 text-left grey--text text--darken-2">
+            <h3 class="subtitle-1 font-weight-bold mb-3 text-left grey--text text--lighten-1">
               <v-icon small left color="blue">mdi-alert-circle-outline</v-icon> Setup Steps:
             </h3>
             <ul class="text-left body-2 text--secondary pl-5 mb-8 spacing-y">
@@ -92,7 +92,7 @@ export default {
   justify-content: center;
   width: 140px;
   height: 140px;
-  background-color: #e3f2fd;
+  background-color: rgba(30, 136, 229, 0.15);
   border-radius: 50%;
 }
 .pulse-icon {

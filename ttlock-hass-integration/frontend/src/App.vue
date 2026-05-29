@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar color="blue" app dense>
+    <v-app-bar color="#1E1E2E" dark app dense>
       <v-app-bar-nav-icon v-on:click="goHome">
         <v-icon v-if="!isHome">mdi-arrow-left</v-icon>
         <v-icon v-else>mdi-square</v-icon>
